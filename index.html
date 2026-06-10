@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>IELTS単語マスター | IELTS Vocabulary Builder</title>
     <link rel="stylesheet" href="style.css">
+	<link rel="manifest" href="manifest.json?v=2">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-title" content="IELTS単語">
+	<link rel="apple-touch-icon" href="icon-152.png">
+	<meta name="theme-color" content="#4CAF50">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="IELTS単語">
 </head>
 <body>
     <div class="app-container">
@@ -62,5 +71,13 @@
     ⌨️ <span class="jp">ショートカット</span> <span class="en">Shortcuts</span>: 
     ← → | Space | F Q C S W | D
 </div>	
+<script>
+    // Register service worker for PWA
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js')
+            .then(() => console.log('Service Worker registered'))
+            .catch((err) => console.log('Service Worker registration failed:', err));
+    }
+</script>
 </body>
 </html>
