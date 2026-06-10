@@ -7,7 +7,6 @@ const urlsToCache = [
   'manifest.json'
 ];
 
-// Install service worker and cache files
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -18,22 +17,18 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Fetch files from cache first, then network
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
-        // Return cached version if found
         if (response) {
           return response;
         }
-        // Otherwise fetch from network
         return fetch(event.request);
       })
   );
 });
 
-// Update service worker and clear old cache
 self.addEventListener('activate', (event) => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
