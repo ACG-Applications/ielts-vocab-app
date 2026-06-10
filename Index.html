@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>IELTS単語マスター | IELTS Vocabulary Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <h1>📖 IELTS単語マスター <span class="en">IELTS Vocabulary Builder</span></h1>
+            <button id="darkModeToggle" class="dark-toggle" aria-label="ダークモード切替">🌙</button>
+        </header>
+
+        <!-- Cluster Selector -->
+        <div class="cluster-section">
+            <label class="jp">カテゴリーを選択 <span class="en">Select Category</span></label>
+            <div class="cluster-buttons" id="clusterButtons"></div>
+        </div>
+
+        <!-- Mode Tabs -->
+        <div class="mode-tabs">
+            <button data-mode="flashcard" class="mode-tab active">📇 フラッシュカード <span class="en">Flashcard</span></button>
+            <button data-mode="quiz" class="mode-tab">❓ クイズ <span class="en">Quiz</span></button>
+            <button data-mode="cloze" class="mode-tab">📝 穴埋め <span class="en">Cloze Test</span></button>
+            <button data-mode="story" class="mode-tab">📖 ストーリーラボ <span class="en">Story Lab</span></button>
+            <button data-mode="writing" class="mode-tab">✍️ ライティング <span class="en">Writing</span></button>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content" id="mainContent">
+            <!-- Dynamic content loads here -->
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="footer-actions">
+            <button id="dashboardBtn" class="footer-btn">📊 進捗ダッシュボード <span class="en">Dashboard</span></button>
+            <button id="wrongBankBtn" class="footer-btn">⚠️ 間違い単語帳 <span class="en">Wrong Bank</span></button>
+			<button id="calendarBtn" class="footer-btn">📅 学習カレンダー <span class="en">Calendar</span></button>
+            <button id="exportBtn" class="footer-btn">📤 エクスポート <span class="en">Export</span></button>
+            <button id="importBtn" class="footer-btn">📥 インポート <span class="en">Import</span></button>
+            <button id="resetBtn" class="footer-btn reset">🗑️ リセット <span class="en">Reset</span></button>
+        </div>
+
+        <!-- Help Links -->
+		<div class="help-links">
+			<a href="#" id="howtoLink">📘 勉強マニュアル <span class="en">Study Manual</span></a>
+			<a href="#" id="userManualLink">📗 ユーザーマニュアル <span class="en">User Manual</span></a>
+			<a href="#" id="disclaimerLink">⚖️ 免責事項 <span class="en">Disclaimer</span></a>
+			<a href="#" id="contactLink">📧 お問い合わせ <span class="en">Contact</span></a>
+		</div>
+    </div>
+
+    <!-- Import File Input (Hidden) -->
+    <input type="file" id="importFileInput" accept=".json" style="display: none;">
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+<div class="shortcuts-hint">
+    ⌨️ <span class="jp">ショートカット</span> <span class="en">Shortcuts</span>: 
+    ← → | Space | F Q C S W | D
+</div>	
+</body>
+</html>

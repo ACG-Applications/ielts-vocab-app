@@ -1,0 +1,766 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f5f7fa;
+    --surface: #ffffff;
+    --text: #1a1a2e;
+    --text-secondary: #666;
+    --border: #e0e0e0;
+    --primary: #4CAF50;
+    --primary-dark: #388E3C;
+    --danger: #f44336;
+    --warning: #ff9800;
+    --info: #2196F3;
+    --card-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+body.dark {
+    --bg: #1a1a2e;
+    --surface: #16213e;
+    --text: #eeeeee;
+    --text-secondary: #aaa;
+    --border: #2a2a4a;
+    --card-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    transition: background 0.3s, color 0.3s;
+    line-height: 1.5;
+}
+
+.app-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+header h1 {
+    font-size: 1.5rem;
+}
+
+header h1 .en {
+    font-size: 0.8rem;
+    font-weight: normal;
+    opacity: 0.7;
+}
+
+.dark-toggle {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    font-size: 1.5rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Cluster Section */
+.cluster-section {
+    margin-bottom: 20px;
+}
+
+.cluster-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.cluster-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.cluster-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 0.85rem;
+    color: var(--text);
+}
+
+.cluster-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.cluster-btn .en {
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+
+/* Mode Tabs */
+.mode-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+}
+
+.mode-tab {
+    background: transparent;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.2s;
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+.mode-tab .en {
+    font-size: 0.7rem;
+    display: block;
+}
+
+.mode-tab.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* Main Content */
+.main-content {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--card-shadow);
+    min-height: 400px;
+}
+
+/* Cards */
+.vocab-card {
+    text-align: center;
+}
+
+.vocab-card .word {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.vocab-card .pronunciation {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.vocab-card .reveal-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 15px 0;
+    font-size: 1rem;
+}
+
+.vocab-card .details {
+    display: none;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.vocab-card .details.show {
+    display: block;
+}
+
+.synonym {
+    background: var(--bg);
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.sentence {
+    background: var(--bg);
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.sentence small {
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.action-buttons button, .nav-buttons button {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    color: var(--text);
+}
+
+.action-buttons button:hover, .nav-buttons button:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.srs-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.srs-easy { background: var(--primary); color: white; border: none; padding: 8px 20px; border-radius: 8px; cursor: pointer; }
+.srs-hard { background: var(--warning); color: white; border: none; padding: 8px 20px; border-radius: 8px; cursor: pointer; }
+.srs-again { background: var(--danger); color: white; border: none; padding: 8px 20px; border-radius: 8px; cursor: pointer; }
+
+/* Quiz Mode */
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.quiz-option {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.2s;
+}
+
+.quiz-option:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.quiz-feedback {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.quiz-feedback.correct { background: #4CAF5033; border-left: 4px solid var(--primary); }
+.quiz-feedback.wrong { background: #f4433633; border-left: 4px solid var(--danger); }
+
+/* Story Lab */
+.story-output {
+    background: var(--bg);
+    padding: 20px;
+    border-radius: 12px;
+    margin: 15px 0;
+    line-height: 1.8;
+}
+
+.story-output .highlight {
+    background: #ffeb3b;
+    color: #1a1a2e;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+body.dark .story-output .highlight {
+    background: #ffc107;
+    color: #1a1a2e;
+}
+
+/* Progress Dashboard */
+.progress-cluster {
+    margin: 15px 0;
+}
+
+.progress-bar-container {
+    background: var(--border);
+    border-radius: 10px;
+    height: 20px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.progress-bar-fill {
+    background: var(--primary);
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s;
+    border-radius: 10px;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.modal-content {
+    background: var(--surface);
+    max-width: 500px;
+    width: 90%;
+    padding: 24px;
+    border-radius: 16px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-content h2 { margin-bottom: 16px; }
+.modal-content button { margin-top: 16px; padding: 10px 20px; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; }
+
+/* Footer */
+.footer-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.footer-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--text);
+}
+
+.footer-btn.reset { border-color: var(--danger); color: var(--danger); }
+
+.help-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.help-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+.help-links a:hover { text-decoration: underline; }
+
+/* Responsive */
+@media (max-width: 600px) {
+    .app-container { padding: 12px; }
+    .vocab-card .word { font-size: 1.8rem; }
+    .mode-tab { padding: 6px 12px; font-size: 0.8rem; }
+    .cluster-btn { padding: 6px 10px; font-size: 0.75rem; }
+}
+/* Streak Calendar Styles */
+.streak-calendar {
+    margin: 20px 0;
+    padding: 15px;
+    background: var(--bg);
+    border-radius: 12px;
+}
+
+.streak-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.streak-stats {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.streak-stats span {
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    border-radius: 8px;
+    background: var(--border);
+    color: var(--text);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.calendar-day.studied {
+    background: var(--primary);
+    color: white;
+}
+
+.calendar-day.today {
+    border: 2px solid var(--warning);
+    font-weight: bold;
+}
+
+.calendar-day.weekend {
+    opacity: 0.7;
+}
+
+.calendar-weekday {
+    font-size: 0.7rem;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+    color: var(--text-secondary);
+}
+
+.streak-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.streak-controls button {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+/* Modal text colors - ensures text is visible in both light and dark mode */
+.modal-content {
+    color: var(--text);
+}
+
+.modal-content button {
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+
+.modal-content .streak-stats {
+    color: var(--text);
+}
+
+.modal-content .streak-controls button {
+    color: var(--text);
+    background: var(--surface);
+}
+
+.modal-content .calendar-weekday {
+    color: var(--text-secondary);
+}
+
+.modal-content .calendar-day {
+    color: var(--text);
+    background: var(--surface);
+}
+
+.modal-content .calendar-day.studied {
+    background: var(--primary);
+    color: white;
+}
+
+.modal-content .calendar-day.today {
+    border: 2px solid var(--warning);
+    color: var(--text);
+    font-weight: bold;
+}
+/* Due Words Filter Styles */
+.filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.2s;
+    color: var(--text);
+}
+
+.filter-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.filter-btn.due {
+    background: var(--warning);
+    color: white;
+    border-color: var(--warning);
+}
+
+.due-count {
+    background: var(--danger);
+    color: white;
+    border-radius: 20px;
+    padding: 2px 8px;
+    font-size: 0.7rem;
+    margin-left: 8px;
+}
+
+.filter-info {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+
+/* Speed Control Styles */
+.speed-controls {
+    display: flex;
+    gap: 8px;
+    margin-left: 10px;
+}
+
+.speed-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: 0.2s;
+    color: var(--text);
+    min-width: 70px;
+}
+
+.speed-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.speed-btn:hover {
+    background: var(--primary-dark);
+    color: white;
+}
+/* Print Export Styles */
+.print-export-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.print-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.2s;
+    color: var(--text);
+}
+
+.print-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Print-specific styles - only apply when printing */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .print-content, .print-content * {
+        visibility: visible;
+    }
+    .print-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+    .no-print {
+        display: none !important;
+    }
+    .vocab-print-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+    }
+}
+.progress-label {
+    font-size: 0.8rem;
+    text-align: right;
+    margin-top: 4px;
+    color: var(--text-secondary);
+}
+
+/* Achievement Badges Styles */
+.badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 15px 0;
+    justify-content: center;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* Unearned badges - grayed out */
+.badge:not(.earned) {
+    opacity: 0.4;
+    filter: grayscale(0.7);
+}
+
+/* Earned badges - full color */
+.badge.earned {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.badge-icon {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.badge-name {
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.badge-desc {
+    font-size: 0.6rem;
+}
+
+/* Dark mode support */
+body.dark .badge.earned {
+    background: var(--primary);
+    color: white;
+}
+
+/* Speed Control Styles - FIXED (removed extra dot) */
+.speed-controls {
+    display: flex;
+    gap: 8px;
+    margin-left: 10px;
+}
+
+.speed-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: 0.2s;
+    color: var(--text);
+    min-width: 70px;
+}
+
+.speed-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.speed-btn:hover {
+    background: var(--primary-dark);
+    color: white;
+}
+/* Keyboard shortcuts hint */
+.shortcuts-hint {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.6rem;
+    color: var(--text-secondary);
+    background: var(--surface);
+    padding: 4px 8px;
+    border-radius: 8px;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    z-index: 100;
+}
+
+.shortcuts-hint:hover {
+    opacity: 1;
+}
+.help-links a {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.help-links a .en {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
